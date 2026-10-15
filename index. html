@@ -3,97 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
 <title>ARENZE — Small tools. Big possibilities.</title>
 <style>
-:root {
-  --bg:#f7f7f7; --card:#fff; --text:#111;
-  --muted:#777; --line:#e5e5e5; --accent:#111;
-}
-body.dark {
-  --bg:#101010; --card:#1b1b1b; --text:#f5f5f5;
-  --muted:#aaa; --line:#333; --accent:#f5f5f5;
-}
-* {box-sizing:border-box}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:system-ui,-apple-system,sans-serif;
-  transition:.2s;
-}
-header {
-  display:flex;justify-content:space-between;align-items:center;
-  padding:18px 6%;border-bottom:1px solid var(--line);
-}
-.logo {font-size:24px;font-weight:900;letter-spacing:3px}
-button,input,textarea {font:inherit}
-button {cursor:pointer}
-.theme {
-  border:1px solid var(--line);background:var(--card);
-  color:var(--text);border-radius:20px;padding:8px 12px;
-}
-main {max-width:850px;margin:auto;padding:55px 20px}
-.badge {color:var(--muted);font-size:12px;letter-spacing:3px}
-h1 {font-size:clamp(38px,9vw,65px);line-height:1.05;margin:18px 0}
-h1 span {color:var(--muted)}
-.subtitle {color:var(--muted);line-height:1.7}
-.tools {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;margin:35px 0;
-}
-.tool {
-  text-align:left;padding:18px;border:1px solid var(--line);
-  border-radius:15px;background:var(--card);color:var(--text);
-}
-.tool:focus,.tool:hover {border-color:var(--text)}
-.tool b {display:block;margin-bottom:7px}
-.tool small {color:var(--muted);line-height:1.5}
-.panel {
-  background:var(--card);border:1px solid var(--line);
-  border-radius:18px;padding:20px;
-}
-.panel h2 {margin-top:0}
-textarea {
-  width:100%;min-height:110px;resize:vertical;
-  background:var(--bg);color:var(--text);
-  border:1px solid var(--line);border-radius:12px;
-  padding:14px;outline:none;
-}
-.primary {
-  background:var(--accent);color:var(--bg);border:0;
-  border-radius:12px;padding:13px 18px;font-weight:700;
-  margin-top:12px;width:100%;
-}
-.result {
-  display:none;white-space:pre-wrap;line-height:1.7;
-  margin-top:18px;padding:15px;border-radius:12px;
-  background:var(--bg);border:1px solid var(--line);
-}
-.actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.actions button {
-  border:1px solid var(--line);border-radius:10px;
-  padding:9px;background:var(--card);color:var(--text);
-}
-footer {text-align:center;color:var(--muted);padding:30px 15px;font-size:12px}
-@media(max-width:450px) {
-  .tools {grid-template-columns:1fr}
-  main {padding-top:35px}
-}
+:root{color-scheme:light;--bg:#f5f5f5;--card:#fff;--text:#151515;--muted:#6b6b6b;--line:#dedede;--accent:#151515}
+body.dark{color-scheme:dark;--bg:#101010;--card:#1a1a1a;--text:#f5f5f5;--muted:#aaa;--line:#333;--accent:#f5f5f5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;transition:background .2s,color .2s}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 6%;border-bottom:1px solid var(--line)}
+.logo{font-size:24px;font-weight:900;letter-spacing:3px}
+.theme{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:24px;padding:8px 13px}
+main{max-width:900px;margin:auto;padding:45px 20px}
+.badge{font-size:11px;letter-spacing:3px;color:var(--muted)}
+h1{font-size:clamp(40px,9vw,68px);line-height:1.03;letter-spacing:-2px;margin:18px 0}
+h1 span{color:var(--muted)}
+.subtitle{line-height:1.7;color:var(--muted);max-width:550px}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:32px 0}
+.tool{text-align:left;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);min-height:105px}
+.tool:hover,.tool:focus{border-color:var(--text)}
+.tool b{display:block;margin-bottom:8px;font-size:16px}
+.tool small{color:var(--muted);line-height:1.5}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:20px}
+.panel h2{margin-top:0}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 7px}
+textarea,input{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px;outline:none}
+textarea{min-height:110px;resize:vertical}
+input{min-height:46px}
+.primary{background:var(--accent);color:var(--bg);border:0;border-radius:12px;padding:13px 18px;font-weight:750;margin-top:12px;width:100%}
+.result{display:none;white-space:pre-wrap;line-height:1.7;margin-top:18px;padding:15px;border-radius:12px;background:var(--bg);border:1px solid var(--line);overflow-wrap:anywhere}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.actions button{border:1px solid var(--line);border-radius:10px;padding:9px;background:var(--card);color:var(--text)}
+footer{text-align:center;color:var(--muted);padding:25px 15px 35px;font-size:12px}
+@media(max-width:500px){.tools{grid-template-columns:1fr}main{padding-top:32px}.tool{min-height:85px}}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">ARENZE.</div>
-  <button class="theme" id="theme">☾ Theme</button>
+  <button class="theme" id="theme" type="button">☾ Theme</button>
 </header>
-
 <main>
   <div class="badge">YOUR PERSONAL THINKING SPACE</div>
   <h1>Think bigger.<br><span>Start here.</span></h1>
-  <p class="subtitle">Small tools. Big possibilities.<br>
-  Turn your thoughts into your next move.</p>
+  <p class="subtitle">Small tools. Big possibilities.<br>Turn your thoughts into your next move.</p>
 
   <div class="tools">
-    <button class="tool" data-mode="chat">
-      <b>✳ AI Assistant</b>
-      <small>Ask questions and explore ideas.</small>
-    </button>
-    <button class="tool"
+    <button class="tool" data-mode="chat" type="button"><b>✳ AI Assistant</b><small>Ask questions and explore ideas.</small></button>
+    <button class="tool" data-mode="ideas" type="button"><b>✦ Idea Machine</b><small>Turn a topic into fresh ideas.</small></button>
+    <button class="tool" data-mode="decision" type="button"><b>⇄ Decision Helper</b><small>Think through a difficult choice.</small></button>
+    <button class="tool" data-mode="goals" type="button"><b>↗ Goal Breaker</b><small>Turn a goal into manageable steps.</small></button>
+    <button class="tool" data-mode="business" type="button"><b>◎ Business Idea Finder</b><small>Explore projects that fit your interests.</small></button>
+    <button class="tool" data-mode="study" type="button"><b>▤ Study Planner</b><small>Make a simple study plan.</small></button>
+  </div>
+
+  <section class="panel" id="workspace">
+    <h2 id="toolTitle">✳ AI Assistant</h2>
+    <p class="subtitle" id="toolDescription">Write what you want help with.</p>
+    <label for="topic">Your topic or question</label>
+    <textarea id="topic" placeholder="Example: Help me plan a beginner workout routine..."></textarea>
+    <label for="extra">Extra details (optional)</label>
+    <input id="extra" placeholder="Time, budget, preferences, or goals">
+    <button class="primary" id="generate" type="button">Generate</button>
+    <div class="result" id="result" aria-live="polite"></div>
+    <div class="actions">
+      <button id="copy" type="button">Copy result</button>
+      <button id="clear" type="button">Clear</button>
+    </div>
+  </section>
+</main>
+<footer>ARENZE · Small tools. Big possibilities.</footer>
+
+<script>
+(function(){
+"use strict";
+const titles={
+chat:["✳ AI Assistant","Ask a question or explain what you're thinking about."],
+ideas:["✦ Idea Machine","Enter a topic and get ideas to explore."],
+decision:["⇄ Decision Helper","Describe your choice and the options you're considering."],
+goals:["↗ Goal Breaker","Describe your goal and get a starter plan."],
+business:["◎ Business Idea Finder","Share your interests, budget, and available tools."],
+study:["▤ Study Planner","Enter a subject and the time you have."]
+};
+let mode="chat";
+const title=document.getElementById("toolTitle");
+const description=document.getElementById("toolDescription");
+const topic=document.getElementById("topic");
+const extra=document.getElementById("extra");
+const result=document.getElementById("result");
+function choose(next){
+ mode=next;
+ title.textContent=titles[mode][0];
+ description.textContent=titles[mode][1];
+ result.style.display="none";
+ document.getElementById("workspace").scrollIntoView({behavior:"smooth",block:"start"});
+ topic.focus({preventScroll:true});
+}
+document.querySelectorAll("[data-mode]").forEach(function(button){
+ button.addEventListener("click",function(){choose(button.dataset.mode);});
+});
+document.getElementById("theme").addEventListener("click",function(){
+ document.body.classList.toggle("dark");
+ try{localStorage.setItem("arenze-dark",document.body.classList.contains("dark")?"1":"0");}catch(e){}
+});
+try{if(localStorage.getItem("arenze-dark")==="1")document.body.classList.add("dark");}catch(e){}
+function makeAnswer(input,details){
+ const t=input.trim();
+ const d=details.trim();
+ if(!t)return "Please enter a topic or question first.";
+ if(mode==="chat"){
+  return "LET'S BREAK IT DOWN\n\nYour question:\n"+t+"\n\n1. Define what you want to achieve.\n2. Identify what you already know.\n3. Split the problem into smaller questions.\n4. Choose one practical next step.\n\nExtra details to consider:\n"+(d||"Add your time, resources, or preferences to make this more specific.")+"\n\nNote: This demo uses built-in logic, not a live AI model.";
+ }
+ if(mode==="ideas"){
+  return "IDEAS TO EXPLORE\n\nTopic: "+t+"\n\n1. Make a beginner's guide about it.\n2. Create a checklist people can use.\n3. Build a simple tool related to it.\n4. Explain common mistakes and fixes.\n5. Create a step-by-step challenge.\n6. Compare useful options for beginners.\n\nYour details: "+(d||"None added")+"\n\nChoose one idea and test a tiny version first.";
+ }
+ if(mode==="decision"){
+  return "DECISION BREAKDOWN\n\nYour choice: "+t+"\n\nOption A — List its benefits, costs, and risks.\nOption B — List its benefits, costs, and risks.\n\nCompare each option on:\n• What matters most to you\n• Time and effort required\n• Cost and available resources\n• What happens if you wait\n\nExtra context: "+(d||"Add the options you are choosing between.")+"\n\nDon't decide from this template alone; fill in real details first.";
+ }
+ if(mode==="goals"){
+  return "YOUR STARTER PLAN\n\nGoal: "+t+"\n\n1. Define what success looks like.\n2. Break it into three small milestones.\n3. Pick the easiest useful first action.\n4. Schedule a short session to begin.\n5. Review progress and adjust weekly.\n\nYour available time or resources: "+(d||"Not specified")+"\n\nStart small enough to repeat consistently.";
+ }
+ if(mode==="business"){
+  return "PROJECT IDEAS\n\nInterests: "+t+"\n\n1. Create a free beginner's guide.\n2. Make a simple digital checklist or planner.\n3. Build a small phone-friendly website or tool.\n4. Publish useful notes or tutorials about the topic.\n5. Test a free prototype before spending money.\n\nBudget or resources: "+(d||"Not specified")+"\n\nThese are starting points, not guaranteed income. Avoid paying upfront or sharing private information.";
+ }
+ return "STUDY STARTER PLAN\n\nSubject: "+t+"\n\n1. Spend 5 minutes reviewing what you know.\n2. Study one small topic.\n3. Close your notes and recall key points.\n4. Answer a few practice questions.\n5. Review mistakes and note what to revisit.\n\nAvailable time: "+(d||"Not specified")+"\n\nTake breaks and adjust the plan to your schedule.";
+}
+document.getElementById("generate").addEventListener("click",function(){
+ result.textContent=makeAnswer(topic.value,extra.value);
+ result.style.display="block";
+});
+document.getElementById("copy").addEventListener("click",async function(){
+ const text=result.textContent;
+ if(!text||result.style.display==="none"){result.textContent="Generate a result first.";result.style.display="block";return;}
+ try{
+  await navigator.clipboard.writeText(text);
+  this.textContent="Copied!";
+  setTimeout(()=>{this.textContent="Copy result";},1400);
+ }catch(e){
+  const range=document.createRange();
+  range.selectNodeContents(result);
+  const selection=window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  result.textContent=text+"\n\nSelect the text above and use your phone's Copy option.";
+ }
+});
+document.getElementById("clear").addEventListener("click",function(){
+ topic.value="";
+ extra.value="";
+ result.textContent="";
+ result.style.display="none";
+ topic.focus();
+});
+})();
+</script>
+</body>
+</html>
